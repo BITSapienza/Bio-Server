@@ -124,3 +124,24 @@ type TableComplete struct {
 		CountryName string `bson:"CountryName"`
 	} `bson:"Country"`
 }
+
+type Genome struct {
+	TaxId          string
+	ScientificName string
+	BioProjects    []SraBioProject
+}
+
+type SraBioProject struct {
+	ScientificName string
+	TaxId          string
+	BioProjectId   string
+	Comment        string
+	ImagesPath     []string
+	BioSamples     []struct {
+		BioSampleId string
+		Experiments []struct {
+			ExperimentId string
+			Runs         []string
+		}
+	}
+}
