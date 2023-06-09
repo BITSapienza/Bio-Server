@@ -1,8 +1,8 @@
-Name:     "Biologia"
-Version:  "a1.0.1"
+Name:     "Bio-Server"
+Version:  "a2.0.1"
 Server:
   ServerPort:     3000
-  ServerIp:       "2.35.186.59"
+  ServerIp:       "localhost"
   ServerAddress:  ":3000"
   ServerConfig:
     ReadTimeout:      "5s"
