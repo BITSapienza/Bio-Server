@@ -43,13 +43,13 @@
 
 ## How to build
 To run backend open terminal and write:
-	```shell
-	go build ./cmd/webapi/
-	```
+```shell
+go build ./cmd/webapi/
+```
 Launch the backend only using (development mode):
-	```shell
-	go run ./cmd/webapi/
-	```
+```shell
+go run ./cmd/webapi/
+```
 
 ## Node/NPM vendoring
 This repository contains the `webui/node_modules` directory with all dependencies for Vue.JS. You should commit the content of that directory and both `package.json` and `package-lock.json`.
