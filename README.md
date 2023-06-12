@@ -31,15 +31,15 @@
 
 # End-Points
 * As displayed in `service/api/api-handler.go` they are:
-	-"/"
-	-"/taxonomy"
-	-"/taxonomy_tree"
-	-"/taxon_term"
-	-"/organism/:id/nucleotides"
-	-"/organism/:id/nucleotides/:locus"
-	-"/organism/:id/proteins"
-	-"/organism/:id/proteins/:locus"
-	-"/analysis"
+	- "/"
+	- "/taxonomy"
+	- "/taxonomy_tree"
+	- "/taxon_term"
+	- "/organism/:id/nucleotides"
+	- "/organism/:id/nucleotides/:locus"
+	- "/organism/:id/proteins"
+	- "/organism/:id/proteins/:locus"
+	- "/analysis"
 
 ## How to build
 To run backend open terminal and write:
