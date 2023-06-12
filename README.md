@@ -18,7 +18,7 @@
 - Bio-Server is a backend platform written in Golang and based on Fantastic Coffee platform. Is intended for research and consultation only and contains a custom structure for a Web and Software Application project. The difference between our project and the original platform is the differentiation of Front-end (accessible at https://github.com/BITSapienza/Vulgaris-Platform) and Back-end for modular approach of development.
 
 # Requirements
-- Despite being a module in its own right, the focus of this backend is to run aside Vulgaris Platform and MongoDB. Please visit homepage for further informations. A docker-file is provided to run a standalone backend in semi-automatic mode, avoiding compatibility and installation issues. If running docker is not desired, golang is needed to be installed in host operating system for running and debugging. Go vendoring is used in this project [Go Vendoring](https://go.dev/ref/mod#vendoring).
+- Despite being a module in its own right, the focus of this backend is to run aside Vulgaris Platform and MongoDB. Please visit homepage for further informations. A docker-file is provided to run a standalone backend in semi-automatic mode, avoiding compatibility and installation issues. If running docker is not desired, golang is needed to be installed in host operating system for running and debugging. [Go Vendoring](https://go.dev/ref/mod#vendoring) is used in this project .
 
 ## Project structure
 * `cmd/` contains all executables; Go programs here do "executable-stuff", like reading options from the CLI/env, etc.
