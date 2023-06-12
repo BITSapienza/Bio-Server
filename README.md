@@ -15,32 +15,34 @@
 - This repository is part of MicroAlgae DB project, formed by various modules. Visit the homepage at link https://github.com/BITSapienza for a general guide and automatic installation through docker-compose.
 
 # Description
-- Bio-Server is a backend platform written in Golang and based on Fantastic Coffee platform. Is intended for research and consultation only and contains a custom structure for a Web and Software Application project.
+- Bio-Server is a backend platform written in Golang and based on Fantastic Coffee platform. Is intended for research and consultation only and contains a custom structure for a Web and Software Application project. The difference between our project and the original platform is the differentiation of Front-end (accessible at https://github.com/BITSapienza/Vulgaris-Platform) and Back-end for modular approach of development.
 
 # Requirements
 - Despite being a module in its own right, the focus of this backend is to run aside Vulgaris Platform and MongoDB. Please visit homepage for further informations. A docker-file is provided to run a standalone backend in semi-automatic mode, avoiding compatibility and installation issues.
 
-# End-Points
-- link [WIP]
-
 ## Project structure
-* `cmd/` contains all executables; Go programs here should only do "executable-stuff", like reading options from the CLI/env, etc.
-	* `cmd/healthcheck` is an example of a daemon for checking the health of servers daemons; useful when the hypervisor is not providing HTTP readiness/liveness probes (e.g., Docker engine)
+* `cmd/` contains all executables; Go programs here do "executable-stuff", like reading options from the CLI/env, etc.
 	* `cmd/webapi` contains an example of a web API server daemon
-* `demo/` contains a demo config file
-* `doc/` contains the documentation (usually, for APIs, this means an OpenAPI file)
-* `service/` has all packages for implementing project-specific functionalities
-	* `service/api` contains an example of an API server
-	* `service/globaltime` contains a wrapper package for `time.Time` (useful in unit testing)
-* `vendor/` is managed by Go, and contains a copy of all dependencies
-* `webui/` is an example of a web frontend in Vue.js; it includes:
-	* Bootstrap JavaScript framework
-	* a customized version of "Bootstrap dashboard" template
-	* feather icons as SVG
-	* Go code for release embedding
+* `service/` has all packages for focal functionalities:
+	* `service/api` contains queries and filter methods. The main requests are managed by `service/api/routerfunctions.go`, that take in all Endpoints and return the requested data by user, calling all other classes under api folder sotto for a first skimming (check on IDs, errors, missing data and various filters);
+	* `service/database`  contains other queries and filter methods finalizers. After first skimming, they serve for search on MongoDB (with check on data and populated structure for table view) and return data requested by router function.
+* `vendor/` is managed by Go, and contains a copy of all dependencies. It is not served by default because is created during build phase. With docker, this folder is managed in a container.
+* `webui/` is provided in Front-end.
 
 Other project files include:
 * `open-npm.sh` starts a new (temporary) container using `node:lts` image for safe web frontend development (you don't want to use `npm` in your system, do you?)
+
+# End-Points
+* As displayed in `service/api/api-handler.go` they are:
+	-"/"
+	-"/taxonomy"
+	-"/taxonomy_tree"
+	-"/taxon_term"
+	-"/organism/:id/nucleotides"
+	-"/organism/:id/nucleotides/:locus"
+	-"/organism/:id/proteins"
+	-"/organism/:id/proteins/:locus"
+	-"/analysis"
 
 ## Go vendoring
 This project uses [Go Vendoring](https://go.dev/ref/mod#vendoring). You must use `go mod vendor` after changing some dependency (`go get` or `go mod tidy`) and add all files under `vendor/` directory in your commit.
