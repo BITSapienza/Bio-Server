@@ -36,16 +36,24 @@ func (db *appDB) FindTaxonTree(search string, typeN string) (str.TaxonomyTree, e
 	for i := 0; i < len(t.SubClasses); i++ {
 		var t1 str.TaxonomyTree
 		filter := bson.M{"TaxId": t.SubClasses[i].TaxId}
-		_ = db.taxonomy_tree.FindOne(context.TODO(), filter).Decode(&t1)
+		err = db.taxonomy_tree.FindOne(context.TODO(), filter).Decode(&t1)
+		if err != nil {
+			continue
+		}
 		for k := 0; k < len(t1.SubClasses); k++ {
 			var t2 str.TaxonomyTree
 			filter := bson.M{"TaxId": t1.SubClasses[k].TaxId}
-			_ = db.taxonomy_tree.FindOne(context.TODO(), filter).Decode(&t2)
+			err = db.taxonomy_tree.FindOne(context.TODO(), filter).Decode(&t2)
+			if err != nil {
+				continue
+			}
 			for j := 0; j < len(t2.SubClasses); j++ {
 				var t3 str.TaxonomyTree
 				filter := bson.M{"TaxId": t2.SubClasses[j].TaxId}
-				_ = db.taxonomy_tree.FindOne(context.TODO(), filter).Decode(&t3)
-
+				err = db.taxonomy_tree.FindOne(context.TODO(), filter).Decode(&t3)
+				if err != nil {
+					continue
+				}
 				t2.SubClasses[j] = t3
 			}
 			t1.SubClasses[k] = t2
